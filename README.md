@@ -6,7 +6,7 @@
 
 **heavy wip: this is basically a todo list**
 
-lofwyr is a modular, pure-python tool intended to perform a lightweight security code review. it is completely free, easy to integrate into any existing continuous integration [lifecycle / toolchain] (http://lmgtfy.com/?q=github+web+hook), and completely customizable.
+lofwyr is a modular, pure-python tool intended to perform a lightweight security code review. it is completely free, easy to integrate into any existing continuous integration [lifecycle / toolchain](http://lmgtfy.com/?q=github+web+hook), and completely customizable.
 
 note that this is a spare time project, written in desperation due to an unbelievably shit 'startup culture' market for this stuff. if you want a specific feature, let me know and i can look into it, but ::no promises::.
 
