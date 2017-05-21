@@ -4,3 +4,4 @@
 *.js,JavaScript,javascript
 *.c,C,c_cpp
 *.cpp,C Plus Plus,c_cpp
+web.config,IIS web.config file,webconfig
