@@ -1,0 +1,6 @@
+*,General Code,general
+*.aspx.cs,C Sharp,c_sharp
+*.java,Java,java
+*.js,JavaScript,javascript
+*.c,C,c_cpp
+*.cpp,C Plus Plus,c_cpp
