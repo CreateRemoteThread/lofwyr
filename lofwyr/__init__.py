@@ -46,14 +46,14 @@ class Engine:
             (desc,module) = self.langdb[lang]
             if module in self.scanmodules.keys():
               if self.scanmodules[module] != None:
-                f_findings.append(self.scanmodules[module].scan(fdata))
+                f_findings += self.scanmodules[module].scan(fdata)
             else:
               try:
                 self.scanmodules[module] = imp.load_source(module,os.path.join(__location__,"%s.py" % module)).ScanEngine()
               except:
                 self.scanmodules[module] = None
                 continue
-              f_findings.append(self.scanmodules[module].scan(fdata))
+              f_findings += self.scanmodules[module].scan(fdata)
       filex.close()
       if len(f_findings) != 0:
         self.report.addFindings(f,f_findings)
