@@ -4,7 +4,7 @@ import sys
 import re
 import os, fnmatch
 import imp
-import report
+import lofwyr.report
 
 textchars = bytearray({7,8,9,10,12,13,27} | set(range(0x20, 0x100)) - {0x7f})
 is_binary_string = lambda bytes: bool(bytes.translate(None, textchars))
@@ -51,11 +51,11 @@ class Engine:
               try:
                 self.scanmodules[module] = imp.load_source(module,os.path.join(__location__,"%s.py" % module)).ScanEngine()
               except:
-                print " [!] module %s not implemented" % (module)
                 self.scanmodules[module] = None
                 continue
               f_findings.append(self.scanmodules[module].scan(fdata))
       filex.close()
       if len(f_findings) != 0:
         self.report.addFindings(f,f_findings)
+    return self.report
     

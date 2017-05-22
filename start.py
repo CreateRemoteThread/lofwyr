@@ -11,7 +11,11 @@ def usage():
 if __name__ == "__main__":
   if len(sys.argv) != 2:
     usage()
-    sys.exit()
+    sys.exit(1)
   else:
     parseEngine = lofwyr.Engine()
-    parseEngine.review(sys.argv[1])
+    report = parseEngine.review(sys.argv[1])
+    if report.isBuildBreaking():
+      sys.exit(1)
+    else:
+      sys.exit(0)
