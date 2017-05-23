@@ -4,8 +4,8 @@ import re
 import lofwyr.report
 
 ruleset = []
-ruleset.append( (re.compile("BEGIN RSA PRIVATE KEY"),True) )
-ruleset.append( (re.compile("Password:"),True) )
+ruleset.append( (re.compile("BEGIN RSA PRIVATE KEY",re.MULTILINE),True) )
+ruleset.append( (re.compile("Password:", re.MULTILINE),True) )
 
 class ScanEngine:
   def __init__(self):

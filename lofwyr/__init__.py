@@ -33,7 +33,7 @@ class Engine:
     self.report = report.Report()
 
   def review(self,dirname):
-    for f in find_files(dirname,"*.*"):
+    for f in find_files(dirname,"*"):
       f_findings = []
       filex = open(f,"r")
       fdata = filex.read()
@@ -46,7 +46,7 @@ class Engine:
             (desc,module) = self.langdb[lang]
             if module in self.scanmodules.keys():
               if self.scanmodules[module] != None:
-                print "scanning with module %s" % module
+                # print "scanning with module %s" % module
                 f_findings += self.scanmodules[module].scan(fdata)
             else:
               try:
