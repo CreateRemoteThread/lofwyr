@@ -27,6 +27,15 @@ if __name__ == "__main__":
       argReport = a
     elif o == "--target":
       argTarget = a 
+  if argRepo is None and argTarget is None:
+    if len(sys.argv) == 2:
+      if sys.argv[1][0:6] == "https:":
+        argTarget = sys.argv[1]
+      else:
+        argRepo = sys.argv[1]
+    else:
+      usage()
+      sys.exit(0)
   parseEngine = lofwyr.Engine()
   reportObject = parseEngine.review(argRepo)
   if reportObject.isBuildBreaking():

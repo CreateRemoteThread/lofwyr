@@ -4,10 +4,8 @@
 # each Report contains multiple arrays of Findings.
 
 class Finding:
-  def __init__(self,finding,filename,location,critical=False,description=""):
+  def __init__(self,finding,critical=False,description=""):
     self.finding = finding
-    self.filename = filename
-    self.location = location
     self.critical = critical
     self.description = description
 

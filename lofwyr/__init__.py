@@ -46,6 +46,7 @@ class Engine:
             (desc,module) = self.langdb[lang]
             if module in self.scanmodules.keys():
               if self.scanmodules[module] != None:
+                print "scanning with module %s" % module
                 f_findings += self.scanmodules[module].scan(fdata)
             else:
               try:
