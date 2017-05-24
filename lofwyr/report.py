@@ -20,11 +20,14 @@ class Report:
       self.findings[filename].append(findinglist)
 
   def isBuildBreaking(self):
-    print self.findings
     for filename in self.findings.keys():
+      print filename
       for finding in self.findings[filename]:
         if finding.critical == True:
+          print " [!] %s" % finding.finding
           return True
+        else:
+          print " [.] %s" % finding.finding
     return False
 
   def printReport(self):
