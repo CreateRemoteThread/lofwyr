@@ -25,11 +25,9 @@ class ScanEngine:
   def scan(self,data):
     findings = []
     for (ruletext, rule,criticality) in ruleset:
-      lenrules = len(rule.findall(data))
-      result = rule.search(data)
-      if result is not None:
-        for i in range(0,lenrules):
-          lineno = self.getLine(data,result.start(i))
-          linetxt = ruletext + " in line %d" % lineno
-          findings.append(lofwyr.report.Finding(linetxt,critical=criticality))
+      resultiter = rule.finditer(data)
+      for result in resultiter:
+        lineno = self.getLine(data,result.start(0))
+        linetxt = ruletext + " in line %d" % lineno
+        findings.append(lofwyr.report.Finding(linetxt,critical=criticality))
     return findings
