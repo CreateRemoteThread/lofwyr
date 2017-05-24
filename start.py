@@ -38,6 +38,7 @@ if __name__ == "__main__":
       sys.exit(0)
   parseEngine = lofwyr.Engine()
   reportObject = parseEngine.review(argRepo)
+  reportObject.printReport()
   if reportObject.isBuildBreaking():
     sys.exit(1)
   else:

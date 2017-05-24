@@ -10,7 +10,7 @@ ruleset.append( ("Non-Critical AWS Token in Commit", re.compile("AKIA", re.MULTI
 
 class ScanEngine:
   def __init__(self):
-    print " [!] general scan engine initializing"
+    print " [>] general scan engine initializing"
     self.amazon_key = re.compile("")
     pass
 

@@ -21,14 +21,15 @@ class Report:
 
   def isBuildBreaking(self):
     for filename in self.findings.keys():
-      print filename
       for finding in self.findings[filename]:
         if finding.critical == True:
-          print " [!] %s" % finding.finding
           return True
-        else:
-          print " [.] %s" % finding.finding
     return False
 
   def printReport(self):
-    print "This is my report. Do with it what you will."
+    for filename in self.findings.keys():
+      for finding in self.findings[filename]:
+        if finding.critical == True:
+          print " [!] %s of %s" % (finding.finding,filename)
+        else:
+          print " [.] %s or %s" % (finding.finding,filename)
