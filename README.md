@@ -12,16 +12,26 @@ note that this is a spare time project, written in desperation due to an unbelie
 
 hatemail to lin\_s.
 
+## how to use lofwyr
+lofwyr is designed to be simple enough to use anywhere, against any target. just run:
+
+./lofwyr target
+
+the target can be any one of:
+
+- URL (starting with http: or https:
+- file
+- path
+- host
+
+lofwyr will attempt to resolve in the above order: that is, if you call ./lofwyr abcd and you have a file abcd and a host abcd, it will attempt to scan the file instead of the host
+
 ## why should i use lofwyr?
 lofwyr isn't as comprehensive as some of the commercial security offerings, but you should use it because:
+
 * i'm not lying to you: other products will sell you some bong smoke pipe dream of "big data", "no false positives", "0day protection" and "cloud analytics". i am not financially incentvized to scam you: lofwyr is basically glorified grep, and does not pretend to be more.
 * this isn't openly backdoored: other code review products will do everything from sending your code overseas to running unsigned http-fetched code updates. this code sits on github, you can review every socket call yourself, disable them all and check with wireshark.
 * this isn't contrast security: from an ethical perspective, i didn't take over leadership of the owasp top ten project and then insert "A7 - Insufficient Application Protection" into the 2017 release candidate document, and then [use an industry best practice standard as advertising](http://www.skeletonscribe.net/2017/04/abusing-owasp.html). i won't claim to be the most morally upstanding person, but lofwyr isn't rancid with corruption.
 * designed with compliance in mind: this tool is designed to fulfill corporate security policy compliance requirements - making it easy to tick that checkbox and never give a shit about security again, if you want.
 * ez mode integration: most products require weeks of time and thousands of dollars of consulting investment to even get working. this is like owasp zap - just give it to your developers and it'll work standalone, or web hook this into your CI pipe and watch the magic.
-
-## how do i use lofwyr
-using lofwyr is intended to be quite easy. basically, you fetch a copy of your latest source to given directory. let's call this "/code/repository1". to scan this repository, just call `./start.py /code/repository1`. this will generate a greppable report identifying the security vulnerabilities it found. it will return 0 if it finds no critical vulnerabilities.
-
-if you're on windows, that isn't a problem: lofwyr will have py2exe windows binaries provided in time. 
 
