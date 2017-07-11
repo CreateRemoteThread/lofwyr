@@ -18,11 +18,8 @@ if __name__ == "__main__":
     sys.exit(0)
     report = sourceEngine.report.report()
   elif sorttype in (lofwyr.DIR_TARGET, lofwyr.FILE_TARGET):
-    sourceEngine = lofwyr.source.SourceEngine
-    report = sourceEngine.review(sys.argv[1])
+    engine = lofwyr.source.SourceEngine()
+    report = engine.review(sys.argv[1])
   if report.isBuildBreaking():
     report.printReport()
     sys.exit(0)
-  else:
-    sys.exit(0) 
-

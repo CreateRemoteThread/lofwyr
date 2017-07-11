@@ -7,8 +7,9 @@ import imp
 import lofwyr.report
 
 def init_langdb():
-  f = open(os.path.join(__location__,"lang.db"),"r")
-  data = f.readlines()
+  with open(os.path.join(os.path.dirname(os.path.realpath(__file__)), "lang.db"), "r") as f:
+    data = f.readlines()
+  
   langdb = {}
   for line in data:
     (extension, description, module) = line.rstrip().split(",")
@@ -20,15 +21,15 @@ class SourceEngine:
   def __init__(self):
     self.langdb = init_langdb()
     self.scanmodules = {}
-    self.report = report.Report()
+    self.report = lofwyr.report.Report()
 
   def review(self,dirname):
-    for f in find_files(dirname,"*"):
+    for f in lofwyr.find_files(dirname,"*"):
       f_findings = []
       filex = open(f,"r")
       fdata = filex.read()
       maxLen = min(1024,len(fdata))
-      if is_binary_string(fdata[0:maxLen]):
+      if lofwyr.is_binary_string(fdata[0:maxLen]):
         pass
       else:
         for lang in self.langdb.keys():
@@ -40,7 +41,7 @@ class SourceEngine:
                 f_findings += self.scanmodules[module].scan(fdata)
             else:
               try:
-                self.scanmodules[module] = imp.load_source(module,os.path.join(__location__,"%s.py" % module)).ScanEngine()
+                self.scanmodules[module] = imp.load_source(module,os.path.join(os.path.dirname(os.path.realpath(__file__)),"%s.py" % module)).ScanEngine()
               except:
                 self.scanmodules[module] = None
                 continue
